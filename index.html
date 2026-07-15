@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KeySprint</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+
+        <h1>⌨ KeySprint</h1>
+
+        <p>Improve your typing speed and accuracy.</p>
+
+    </header>
+
+    <main>
+
+        <section class="typing-box">
+
+            <p id="textDisplay"></p>
+
+        </section>
+
+        <textarea
+            id="textInput"
+            placeholder="Start typing here..."
+            autocomplete="off"
+            spellcheck="false"></textarea>
+
+        <section class="stats">
+
+            <div class="stat">
+
+                <h2 id="wpm">0</h2>
+
+                <span>WPM</span>
+
+            </div>
+
+            <div class="stat">
+
+                <h2 id="accuracy">100%</h2>
+
+                <span>Accuracy</span>
+
+            </div>
+
+            <div class="stat">
+
+                <h2 id="errors">0</h2>
+
+                <span>Errors</span>
+
+            </div>
+
+            <div class="stat">
+
+                <h2 id="time">30</h2>
+
+                <span>Time</span>
+
+            </div>
+
+        </section>
+
+        <div class="progress">
+
+            <div id="progressBar"></div>
+
+        </div>
+
+        <button id="restartBtn">
+
+            Restart Test
+
+        </button>
+
+    </main>
+
+    <footer>
+
+    <p>
+
+        Developed with ❤️ by
+
+        <a href="https://github.com/KeiferJoel" target="_blank">
+
+            Keifer Joel
+
+        </a>
+
+    </p>
+
+</footer>
+
+</div>
+
+<script src="assets/data/texts.js"></script>
+
+<script src="assets/js/script.js"></script>
+
+
+
+
+</body>
+
+
+
+
+</html>
