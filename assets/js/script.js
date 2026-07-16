@@ -19,18 +19,34 @@ const finalErrors = document.getElementById("finalErrors");
 
 const tryAgainBtn = document.getElementById("tryAgainBtn");
 
+const timeSelect = document.getElementById("timeSelect");
 
 let currentText = "";
 
 let timer;
 
-let timeLeft = 30;
+let selectedTime = 30;
+
+let timeLeft = selectedTime;
 
 let started = false;
 
 let errors = 0;
 
 let typedCharacters = 0;
+
+
+timeSelect.addEventListener("change", () => {
+
+    selectedTime = Number(timeSelect.value);
+
+    timeLeft = selectedTime;
+
+    timeElement.textContent = selectedTime;
+
+    progressBar.style.width = "100%";
+
+});
 
 
 function loadRandomText(){
@@ -63,7 +79,8 @@ function startTimer() {
 
         timeElement.textContent = timeLeft;
 
-        progressBar.style.width = (timeLeft / 30) * 100 + "%";
+        // progressBar.style.width = (timeLeft / 30) * 100 + "%";
+        progressBar.style.width = (timeLeft / selectedTime) * 100 + "%";
 
         if (timeLeft <= 0) {
 
@@ -154,7 +171,8 @@ function updateStats() {
 
     accuracyElement.textContent = accuracy + "%";
 
-    const minutes = (30 - timeLeft) / 60;
+    // const minutes = (30 - timeLeft) / 60;
+const minutes = (selectedTime - timeLeft) / 60;
 
     const words = correctCharacters / 5;
 
@@ -177,7 +195,7 @@ function restartTest() {
 
     started = false;
 
-    timeLeft = 30;
+    timeLeft = selectedTime;
 
     errors = 0;
 
@@ -187,7 +205,7 @@ function restartTest() {
 
     textInput.disabled = false;
 
-    timeElement.textContent = 30;
+    timeElement.textContent = selectedTime;
 
     progressBar.style.width = "100%";
 
