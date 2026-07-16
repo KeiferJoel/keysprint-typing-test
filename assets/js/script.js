@@ -9,6 +9,17 @@ const errorsElement = document.getElementById("errors");
 const timeElement = document.getElementById("time");
 const progressBar = document.getElementById("progressBar");
 
+const resultModal = document.getElementById("resultModal");
+
+const finalWpm = document.getElementById("finalWpm");
+
+const finalAccuracy = document.getElementById("finalAccuracy");
+
+const finalErrors = document.getElementById("finalErrors");
+
+const tryAgainBtn = document.getElementById("tryAgainBtn");
+
+
 let currentText = "";
 
 let timer;
@@ -58,7 +69,7 @@ function startTimer() {
 
             clearInterval(timer);
 
-            textInput.disabled = true;
+            finishTest();
 
         }
 
@@ -159,6 +170,9 @@ restartBtn.addEventListener("click", restartTest);
 
 function restartTest() {
 
+
+    resultModal.classList.add("hidden");
+
     clearInterval(timer);
 
     started = false;
@@ -186,3 +200,20 @@ function restartTest() {
     loadRandomText();
 
 }
+
+
+function finishTest(){
+
+    textInput.disabled = true;
+
+    finalWpm.textContent = wpmElement.textContent;
+
+    finalAccuracy.textContent = accuracyElement.textContent;
+
+    finalErrors.textContent = errorsElement.textContent;
+
+    resultModal.classList.remove("hidden");
+
+}
+
+tryAgainBtn.addEventListener("click", restartTest);

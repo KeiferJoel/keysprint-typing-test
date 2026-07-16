@@ -450,3 +450,122 @@ footer a:hover{
     color:var(--primaryHover);
 
 }
+
+
+/*==========================
+        RESULT MODAL
+==========================*/
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    backdrop-filter:blur(8px);
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+.modal-content{
+
+    width:350px;
+
+    background:#111827;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    animation:popup .3s ease;
+
+}
+
+.modal-content h2{
+
+    margin-bottom:25px;
+
+}
+
+.result{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    margin-bottom:25px;
+
+}
+
+.result p{
+
+    font-size:18px;
+
+}
+
+#tryAgainBtn{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    background:#7C3AED;
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+#tryAgainBtn:hover{
+
+    background:#8B5CF6;
+
+}
+
+@keyframes popup{
+
+    from{
+
+        transform:scale(.8);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
