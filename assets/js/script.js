@@ -80,7 +80,27 @@ function startTimer() {
         timeElement.textContent = timeLeft;
 
         // progressBar.style.width = (timeLeft / 30) * 100 + "%";
-        progressBar.style.width = (timeLeft / selectedTime) * 100 + "%";
+        // progressBar.style.width = (timeLeft / selectedTime) * 100 + "%";
+
+        const progress = (timeLeft / selectedTime) * 100;
+
+progressBar.style.width = progress + "%";
+
+if (progress > 50) {
+
+    progressBar.style.background = "linear-gradient(90deg, #22C55E, #16A34A)";
+
+}
+else if (progress > 20) {
+
+    progressBar.style.background = "linear-gradient(90deg, #FACC15, #EAB308)";
+
+}
+else {
+
+    progressBar.style.background = "linear-gradient(90deg, #EF4444, #DC2626)";
+
+}
 
         if (timeLeft <= 0) {
 
