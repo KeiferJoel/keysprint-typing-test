@@ -412,9 +412,13 @@ textarea:focus{
 
 .current{
 
-    background:rgba(124,58,237,.25);
+    position:relative;
+
+    background:rgba(124,58,237,.18);
 
     border-radius:4px;
+
+    animation:cursorBlink 1s infinite;
 
 }
 
@@ -630,6 +634,29 @@ footer a:hover{
         transform:scale(1);
 
         opacity:1;
+
+    }
+
+}
+
+
+@keyframes cursorBlink{
+
+    0%{
+
+        background:rgba(124,58,237,.15);
+
+    }
+
+    50%{
+
+        background:rgba(124,58,237,.45);
+
+    }
+
+    100%{
+
+        background:rgba(124,58,237,.15);
 
     }
 

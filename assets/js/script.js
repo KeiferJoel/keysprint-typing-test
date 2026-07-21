@@ -59,13 +59,21 @@ function loadRandomText(){
 
     currentText.split("").forEach(letter=>{
 
-        const span = document.createElement("span");
+    const span = document.createElement("span");
 
-        span.innerText = letter;
+    span.innerText = letter;
 
-        textDisplay.appendChild(span);
+    textDisplay.appendChild(span);
 
-    });
+});
+
+const firstLetter = textDisplay.querySelector("span");
+
+if(firstLetter){
+
+    firstLetter.classList.add("current");
+
+}
 
 }
 
@@ -148,7 +156,11 @@ function checkTyping() {
 
         if (character == null) {
 
-            letter.classList.add("current");
+            if (index === typedText.length) {
+
+                letter.classList.add("current");
+
+            }
 
         }
 
@@ -169,6 +181,16 @@ function checkTyping() {
     });
 
     updateStats();
+
+    if(typedText === currentText){
+
+    clearInterval(timer);
+
+    finishTest();
+
+}
+
+
 
 }
 
