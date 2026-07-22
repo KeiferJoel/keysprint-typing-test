@@ -348,7 +348,7 @@ textarea:focus{
         BUTTON
 =============================*/
 
-#restartBtn{
+/* #restartBtn{
 
     width:100%;
 
@@ -392,7 +392,102 @@ textarea:focus{
 
     transform:scale(.98);
 
+} */
+
+/*======================================
+            START BUTTON
+======================================*/
+
+.start-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    width:100%;
+
+    margin-top:25px;
+
+    padding:16px 24px;
+
+    border:none;
+
+    border-radius:16px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    color:#fff;
+
+    background:linear-gradient(
+        135deg,
+        #7C3AED,
+        #9333EA,
+        #2563EB
+    );
+
+    background-size:200% 200%;
+
+    transition:.35s ease;
+
+    box-shadow:
+        0 10px 25px rgba(124,58,237,.30);
+
+        animation:gradientMove 4s linear infinite alternate;
+
 }
+
+.start-btn:hover{
+
+    transform:translateY(-3px);
+
+    background-position:right center;
+
+    box-shadow:
+        0 15px 35px rgba(124,58,237,.45);
+
+}
+
+.start-btn:active{
+
+    transform:scale(.97);
+
+}
+
+.start-btn span:first-child{
+
+    font-size:20px;
+
+    transition:.3s;
+
+}
+
+.start-btn:hover span:first-child{
+
+    transform:translateX(4px);
+
+}
+
+.start-btn:disabled{
+
+    opacity:.55;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+    box-shadow:none;
+
+}
+
+
 
 /*=============================
       LETTER STATES
@@ -657,6 +752,86 @@ footer a:hover{
     100%{
 
         background:rgba(124,58,237,.15);
+
+    }
+
+}
+
+
+/*==========================
+        COUNTDOWN
+
+==========================*/
+
+/*=========================
+        COUNTDOWN
+=========================*/
+
+.countdown{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:180px;
+
+    font-weight:800;
+
+    color:white;
+
+    background:rgba(0,0,0,.75);
+
+    backdrop-filter:blur(8px);
+
+    z-index:1000;
+
+    animation:zoom .8s;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+@keyframes zoom{
+
+    from{
+
+        transform:scale(.4);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes gradientMove{
+
+    0%{
+
+        background-position:left center;
+
+    }
+
+    100%{
+
+        background-position:right center;
 
     }
 

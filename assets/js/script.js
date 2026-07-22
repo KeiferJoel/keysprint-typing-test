@@ -1,7 +1,9 @@
 const textDisplay = document.getElementById("textDisplay");
 const textInput = document.getElementById("textInput");
 
-const restartBtn = document.getElementById("restartBtn");
+
+const startBtn = document.getElementById("startBtn");
+const countdown = document.getElementById("coutdown");
 
 const wpmElement = document.getElementById("wpm");
 const accuracyElement = document.getElementById("accuracy");
@@ -28,8 +30,6 @@ let timer;
 let selectedTime = 30;
 
 let timeLeft = selectedTime;
-
-let started = false;
 
 let errors = 0;
 
@@ -79,7 +79,11 @@ if(firstLetter){
 
 loadRandomText();
 
+textInput.disabled = true;
+
 function startTimer() {
+
+    clearInterval(timer);
 
     timer = setInterval(() => {
 
@@ -123,17 +127,78 @@ else {
 }
 
 
-textInput.addEventListener("input", () => {
+// textInput.addEventListener("input", () => {
 
-    if (!started) {
+//     if (!started) {
 
-        started = true;
+//         started = true;
 
-        startTimer();
+//         startTimer();
 
-    }
+//     }
 
-    checkTyping();
+//     checkTyping();
+
+// });
+
+textInput.addEventListener("input", checkTyping);
+
+// function startCountdown(){
+
+//     let count = 3;
+
+//     countdown.classList.remove("hidden");
+
+//     countdown.textContent = count;
+
+//     const interval = setInterval(()=>{
+
+//         count--;
+
+//         if(count > 0){
+
+//             countdown.textContent = count;
+
+//         }
+
+//         else if(count === 0){
+
+//             countdown.textContent = "GO!";
+
+//         }
+
+//         else{
+
+//             clearInterval(interval);
+
+//             countdown.classList.add("hidden");
+
+//             textInput.disabled = false;
+
+//             textInput.focus();
+
+//             startTimer();
+
+//         }
+
+//     },1000);
+
+// }
+
+
+
+
+startBtn.addEventListener("click", () => {
+
+    startBtn.disabled = true;
+
+    timeSelect.disabled = true;
+
+    textInput.disabled = false;
+
+    textInput.focus();
+
+    startTimer();
 
 });
 
@@ -226,16 +291,13 @@ const minutes = (selectedTime - timeLeft) / 60;
 
 }
 
-restartBtn.addEventListener("click", restartTest);
-
-function restartTest() {
 
 
-    resultModal.classList.add("hidden");
+function restartTest(){
 
     clearInterval(timer);
 
-    started = false;
+    resultModal.classList.add("hidden");
 
     timeLeft = selectedTime;
 
@@ -245,11 +307,14 @@ function restartTest() {
 
     textInput.value = "";
 
-    textInput.disabled = false;
+    textInput.disabled = true;
 
     timeElement.textContent = selectedTime;
 
     progressBar.style.width = "100%";
+
+    progressBar.style.background =
+        "linear-gradient(90deg,#22C55E,#16A34A)";
 
     accuracyElement.textContent = "100%";
 
@@ -259,6 +324,10 @@ function restartTest() {
 
     loadRandomText();
 
+    startBtn.disabled = false;
+
+    timeSelect.disabled = false;
+
 }
 
 
@@ -266,10 +335,19 @@ function finishTest(){
 
     textInput.disabled = true;
 
+    startBtn.innerHTML = `
+    <span>🔄</span>
+    <span>New Test</span>
+`;
+
+    startBtn.disabled = false;
+
+    timeSelect.disabled = false;    
+
     finalWpm.textContent = wpmElement.textContent;
 
     finalAccuracy.textContent = accuracyElement.textContent;
-
+ 
     finalErrors.textContent = errorsElement.textContent;
 
     resultModal.classList.remove("hidden");
