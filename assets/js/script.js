@@ -3,7 +3,7 @@ const textInput = document.getElementById("textInput");
 
 
 const startBtn = document.getElementById("startBtn");
-const countdown = document.getElementById("coutdown");
+const countdown = document.getElementById("countdown");
 
 const wpmElement = document.getElementById("wpm");
 const accuracyElement = document.getElementById("accuracy");
@@ -127,6 +127,61 @@ else {
 }
 
 
+function startCountdown() {
+
+    let count = 3;
+
+    countdown.classList.remove("hidden");
+
+    countdown.textContent = count;
+
+    const interval = setInterval(() => {
+
+        count--;
+
+        if (count > 0) {
+
+            countdown.textContent = count;
+
+            countdown.classList.remove("animate");
+
+            void countdown.offsetWidth;
+
+            countdown.classList.add("animate");
+
+        }
+
+        else if (count === 0) {
+
+            countdown.textContent = "GO!";
+
+            countdown.classList.remove("animate");
+
+            void countdown.offsetWidth;
+
+            countdown.classList.add("animate");
+
+        }
+
+        else {
+
+            clearInterval(interval);
+
+            countdown.classList.add("hidden");
+
+            textInput.disabled = false;
+
+            textInput.focus();
+
+            startTimer();
+
+        }
+
+    }, 1000);
+
+}
+
+
 // textInput.addEventListener("input", () => {
 
 //     if (!started) {
@@ -194,11 +249,7 @@ startBtn.addEventListener("click", () => {
 
     timeSelect.disabled = true;
 
-    textInput.disabled = false;
-
-    textInput.focus();
-
-    startTimer();
+    startCountdown();
 
 });
 

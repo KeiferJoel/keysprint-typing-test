@@ -836,3 +836,70 @@ footer a:hover{
     }
 
 }
+
+/*=========================
+      COUNTDOWN
+=========================*/
+
+.countdown{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.75);
+
+    backdrop-filter:blur(8px);
+
+    font-size:170px;
+
+    font-weight:800;
+
+    color:white;
+
+    z-index:9999;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+.animate{
+
+    animation:countdownPop .8s ease;
+}
+
+@keyframes countdownPop{
+
+    0%{
+
+        transform:scale(.4);
+
+        opacity:0;
+
+    }
+
+    60%{
+
+        transform:scale(1.2);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
