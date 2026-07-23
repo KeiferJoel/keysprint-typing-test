@@ -769,29 +769,38 @@ footer a:hover{
 
 .countdown{
 
-    position:fixed;
+    position: fixed;
+    inset: 0;
 
-    inset:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    display:flex;
+    background: rgba(8, 8, 12, .82);
 
-    justify-content:center;
+    backdrop-filter: blur(10px);
 
-    align-items:center;
+    z-index: 9999;
 
-    font-size:180px;
+    font-size: 180px;
+    font-weight: 800;
 
-    font-weight:800;
+    background-image: linear-gradient(
+        135deg,
+        #8B5CF6,
+        #7C3AED,
+        #3B82F6,
+        #22D3EE
+    );
 
-    color:white;
+    background-size: 300% 300%;
 
-    background:rgba(0,0,0,.75);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
-    backdrop-filter:blur(8px);
-
-    z-index:1000;
-
-    animation:zoom .8s;
+    animation:
+        countdownPop .8s ease,
+        gradientMove 3s linear infinite;
 
 }
 
@@ -825,13 +834,13 @@ footer a:hover{
 
     0%{
 
-        background-position:left center;
+        background-position: left center;
 
     }
 
     100%{
 
-        background-position:right center;
+        background-position: right center;
 
     }
 
@@ -865,6 +874,10 @@ footer a:hover{
 
     z-index:9999;
 
+    text-shadow:
+        0 0 20px rgba(124,58,237,.45),
+        0 0 40px rgba(59,130,246,.35);
+
 }
 
 .hidden{
@@ -882,23 +895,25 @@ footer a:hover{
 
     0%{
 
-        transform:scale(.4);
+        transform: scale(.3);
 
-        opacity:0;
+        opacity: 0;
 
     }
 
     60%{
 
-        transform:scale(1.2);
+        transform: scale(1.15);
+
+        opacity: 1;
 
     }
 
     100%{
 
-        transform:scale(1);
+        transform: scale(1);
 
-        opacity:1;
+        opacity: 1;
 
     }
 
