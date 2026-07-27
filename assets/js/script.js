@@ -330,7 +330,7 @@ function updateStats() {
     accuracyElement.textContent = accuracy + "%";
 
     // const minutes = (30 - timeLeft) / 60;
-const minutes = (selectedTime - timeLeft) / 60;
+    const minutes = (selectedTime - timeLeft) / 60;
 
     const words = correctCharacters / 5;
 
@@ -389,7 +389,7 @@ function finishTest(){
     startBtn.innerHTML = `
     <span>🔄</span>
     <span>New Test</span>
-`;
+                        `;
 
     startBtn.disabled = false;
 
@@ -405,4 +405,4 @@ function finishTest(){
 
 }
 
-tryAgainBtn.addEventListener("click", restartTest);
+    tryAgainBtn.addEventListener("click", restartTest);
