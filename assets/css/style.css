@@ -850,34 +850,25 @@ footer a:hover{
       COUNTDOWN
 =========================*/
 
-.countdown{
+.countdown {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    position:fixed;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 
-    inset:0;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:rgba(0,0,0,.75);
-
-    backdrop-filter:blur(8px);
-
-    font-size:170px;
-
-    font-weight:800;
-
-    color:white;
-
-    z-index:9999;
+    font-size: 170px;
+    font-weight: 800;
+    color: white;
+    z-index: 9999;
 
     text-shadow:
-        0 0 20px rgba(124,58,237,.45),
-        0 0 40px rgba(59,130,246,.35);
-
+        0 0 20px rgba(124, 58, 237, 0.45),
+        0 0 40px rgba(59, 130, 246, 0.35);
 }
 
 .hidden{
