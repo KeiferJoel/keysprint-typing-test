@@ -620,22 +620,17 @@ footer a:hover{
         RESULT MODAL
 ==========================*/
 
-.modal{
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
 
-    position:fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    inset:0;
-
-    background:rgba(0,0,0,.75);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    backdrop-filter:blur(8px);
-
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .hidden{
@@ -767,8 +762,7 @@ footer a:hover{
         COUNTDOWN
 =========================*/
 
-.countdown{
-
+.countdown {
     position: fixed;
     inset: 0;
 
@@ -776,9 +770,10 @@ footer a:hover{
     justify-content: center;
     align-items: center;
 
-    background: rgba(8, 8, 12, .82);
+    background: rgba(8, 8, 12, 0.82);
 
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
     z-index: 9999;
 
@@ -796,13 +791,15 @@ footer a:hover{
     background-size: 300% 300%;
 
     -webkit-background-clip: text;
+    background-clip: text;
+
     -webkit-text-fill-color: transparent;
 
     animation:
-        countdownPop .8s ease,
+        countdownPop 0.8s ease,
         gradientMove 3s linear infinite;
-
 }
+
 
 .hidden{
 
