@@ -906,3 +906,59 @@ footer a:hover{
     }
 
 }
+
+/*==========================
+      PERSONAL BEST
+==========================*/
+
+.personal-best-result {
+
+    margin-top: 8px;
+
+    color: #FACC15;
+
+}
+
+.new-record {
+
+    margin-top: 5px;
+
+    padding: 12px 16px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    color: #F8FAFC;
+
+    background: linear-gradient(
+        135deg,
+        #7C3AED,
+        #2563EB
+    );
+
+    animation: recordPop 0.5s ease;
+
+}
+
+@keyframes recordPop {
+
+    from {
+
+        opacity: 0;
+        transform: scale(0.85);
+
+    }
+
+    to {
+
+        opacity: 1;
+        transform: scale(1);
+
+    }
+
+}

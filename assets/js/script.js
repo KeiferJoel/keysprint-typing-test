@@ -23,6 +23,13 @@ const tryAgainBtn = document.getElementById("tryAgainBtn");
 
 const timeSelect = document.getElementById("timeSelect");
 
+const personalBestElement = document.getElementById("personalBest");
+const newRecordElement = document.getElementById("newRecord");
+
+const PERSONAL_BEST_KEY = "keysprint_personal_best";
+
+let personalBest = Number(localStorage.getItem(PERSONAL_BEST_KEY)) || 0;
+
 let currentText = "";
 
 let timer;
@@ -343,6 +350,30 @@ function updateStats() {
 }
 
 
+function updatePersonalBest(currentWpm) {
+
+    if (currentWpm > personalBest) {
+
+        personalBest = currentWpm;
+
+        localStorage.setItem(
+            PERSONAL_BEST_KEY,
+            personalBest
+        );
+
+        personalBestElement.textContent = personalBest;
+
+        newRecordElement.classList.remove("hidden");
+
+        return;
+    }
+
+    personalBestElement.textContent = personalBest;
+
+    newRecordElement.classList.add("hidden");
+}
+
+
 
 function restartTest(){
 
@@ -379,27 +410,35 @@ function restartTest(){
 
     timeSelect.disabled = false;
 
+    newRecordElement.classList.add("hidden");
+    
+    personalBestElement.textContent = personalBest;
+
 }
 
 
-function finishTest(){
+function finishTest() {
 
     textInput.disabled = true;
 
     startBtn.innerHTML = `
-    <span>🔄</span>
-    <span>New Test</span>
-                        `;
+        <span>🔄</span>
+        <span>New Test</span>
+    `;
 
     startBtn.disabled = false;
 
-    timeSelect.disabled = false;    
+    timeSelect.disabled = false;
 
     finalWpm.textContent = wpmElement.textContent;
 
     finalAccuracy.textContent = accuracyElement.textContent;
- 
+
     finalErrors.textContent = errorsElement.textContent;
+
+    const currentWpm = Number(wpmElement.textContent);
+
+    updatePersonalBest(currentWpm);
 
     resultModal.classList.remove("hidden");
 
