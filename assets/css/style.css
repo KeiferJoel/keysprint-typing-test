@@ -962,3 +962,175 @@ footer a:hover{
     }
 
 }
+
+/*==========================
+       SESSION HISTORY
+==========================*/
+
+.session-history {
+
+    margin-top: 30px;
+
+    padding: 25px;
+
+    background: #0F172A;
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+}
+
+.history-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+}
+
+.history-header h2 {
+
+    font-size: 20px;
+
+}
+
+.clear-history-btn {
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding: 8px 12px;
+
+    background: rgba(239, 68, 68, 0.12);
+
+    color: #F87171;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+.clear-history-btn:hover {
+
+    background: rgba(239, 68, 68, 0.2);
+
+}
+
+.history-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+.session-item {
+
+    display: grid;
+
+    grid-template-columns: 1.2fr repeat(4, 1fr);
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.03);
+
+    transition: 0.3s;
+
+}
+
+.session-item:hover {
+
+    transform: translateX(4px);
+
+    background: rgba(124, 58, 237, 0.08);
+
+}
+
+.session-date {
+
+    font-size: 14px;
+
+    color: var(--textSecondary);
+
+}
+
+.session-metric {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+.session-metric strong {
+
+    font-size: 16px;
+
+    color: white;
+
+}
+
+.session-metric span {
+
+    margin-top: 3px;
+
+    font-size: 11px;
+
+    color: var(--textSecondary);
+
+}
+
+.empty-history {
+
+    text-align: center;
+
+    padding: 20px;
+
+    color: var(--textSecondary);
+
+    font-size: 14px;
+
+}
+
+@media (max-width: 768px) {
+
+    .session-item {
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 18px;
+
+    }
+
+    .session-date {
+
+        grid-column: span 2;
+
+        text-align: center;
+
+    }
+
+}

@@ -23,6 +23,16 @@ const tryAgainBtn = document.getElementById("tryAgainBtn");
 
 const timeSelect = document.getElementById("timeSelect");
 
+const historyList = document.getElementById("historyList");
+
+const clearHistoryBtn = document.getElementById("clearHistoryBtn");
+
+const SESSION_HISTORY_KEY = "keysprint_session_history";
+
+let sessionHistory = JSON.parse(
+    localStorage.getItem(SESSION_HISTORY_KEY)
+) || [];
+
 const personalBestElement = document.getElementById("personalBest");
 const newRecordElement = document.getElementById("newRecord");
 
@@ -374,6 +384,121 @@ function updatePersonalBest(currentWpm) {
 }
 
 
+function saveSession() {
+
+    const session = {
+
+        id: Date.now(),
+
+        date: new Date().toISOString(),
+
+        duration: selectedTime,
+
+        wpm: Number(wpmElement.textContent),
+
+        accuracy: Number(
+            accuracyElement.textContent.replace("%", "")
+        ),
+
+        errors: Number(errorsElement.textContent)
+
+    };
+
+    sessionHistory.unshift(session);
+
+    localStorage.setItem(
+        SESSION_HISTORY_KEY,
+        JSON.stringify(sessionHistory)
+    );
+
+    renderSessionHistory();
+
+}
+
+
+function renderSessionHistory() {
+
+    historyList.innerHTML = "";
+
+    if (sessionHistory.length === 0) {
+
+        historyList.innerHTML = `
+            <p class="empty-history">
+                No sessions yet. Complete a test to see your progress.
+            </p>
+        `;
+
+        return;
+
+    }
+
+    const recentSessions = sessionHistory.slice(0, 5);
+
+    recentSessions.forEach(session => {
+
+        const date = new Date(session.date);
+
+        const formattedDate = date.toLocaleDateString(
+            undefined,
+            {
+                month: "short",
+                day: "numeric"
+            }
+        );
+
+        const sessionItem = document.createElement("div");
+
+        sessionItem.classList.add("session-item");
+
+        sessionItem.innerHTML = `
+
+            <div class="session-date">
+
+                ${formattedDate}
+
+            </div>
+
+            <div class="session-metric">
+
+                <strong>${session.wpm}</strong>
+
+                <span>WPM</span>
+
+            </div>
+
+            <div class="session-metric">
+
+                <strong>${session.accuracy}%</strong>
+
+                <span>Accuracy</span>
+
+            </div>
+
+            <div class="session-metric">
+
+                <strong>${session.errors}</strong>
+
+                <span>Errors</span>
+
+            </div>
+
+            <div class="session-metric">
+
+                <strong>${session.duration}s</strong>
+
+                <span>Duration</span>
+
+            </div>
+
+        `;
+
+        historyList.appendChild(sessionItem);
+
+    });
+
+}
+
+
 
 function restartTest(){
 
@@ -406,6 +531,8 @@ function restartTest(){
 
     loadRandomText();
 
+    renderSessionHistory();
+
     startBtn.disabled = false;
 
     timeSelect.disabled = false;
@@ -418,6 +545,8 @@ function restartTest(){
 
 
 function finishTest() {
+
+    clearInterval(timer);
 
     textInput.disabled = true;
 
@@ -436,12 +565,20 @@ function finishTest() {
 
     finalErrors.textContent = errorsElement.textContent;
 
-    const currentWpm = Number(wpmElement.textContent);
-
-    updatePersonalBest(currentWpm);
+    saveSession();
 
     resultModal.classList.remove("hidden");
 
 }
 
     tryAgainBtn.addEventListener("click", restartTest);
+
+    clearHistoryBtn.addEventListener("click", () => {
+
+    sessionHistory = [];
+
+    localStorage.removeItem(SESSION_HISTORY_KEY);
+
+    renderSessionHistory();
+
+});
